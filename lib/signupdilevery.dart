@@ -1,30 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:project1/home_screen.dart';
+import 'package:project1/login_screen.dart';
 import 'package:project1/signup_choose.dart';
-import 'package:project1/signupcustomer_screen.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class SignUpDilevery extends StatelessWidget {
+  const SignUpDilevery({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(backgroundColor: Colors.white,elevation: 0,iconTheme: IconThemeData(color: Colors.orange,size: 35)),
       backgroundColor: Colors.white,
       body: Center(
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(
-                height: 60,
-              ),
+
               Image.asset(
                 "assets/images/dilevery_logo.png",
-                width: 250,
-                height: 250,
+                width: 150,
+                height: 100,
               ),
               Container(
                 width: 340,
-                height: 400,
+                height: 570,
                 decoration: BoxDecoration(
                   color: Colors.grey[200],
                   borderRadius: BorderRadius.circular(25),
@@ -36,20 +34,57 @@ class LoginScreen extends StatelessWidget {
                       height: 18,
                     ),
                     Text(
-                      "Welcome Back!",
+                      " Dilevery Create Account" ,
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
+                      TextStyle(fontWeight: FontWeight.bold, fontSize: 26),
                     ),
                     SizedBox(
                       height: 18,
                     ),
-                    Text(
-                      "Login to your existing account",
-                      style: TextStyle(color: Colors.grey, fontSize: 18),
+
+                    SizedBox(
+                      height: 18,
+                    ),
+                    Container(
+                      width: 300,
+                      height: 60,
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.orange),
+                                borderRadius: BorderRadius.circular(28)),
+                            labelText: " Username",
+                            labelStyle: TextStyle(color: Colors.black),
+                            prefixIcon: Icon(
+                              Icons.account_circle_outlined,
+                              color: Colors.grey,
+                            ),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(28))),
+                      ),
                     ),
                     SizedBox(
-                      height: 20,
+                      height:20
+                      ,),
+                    Container(
+                      width: 300,
+                      height: 60,
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.orange),
+                                borderRadius: BorderRadius.circular(28)),
+                            labelText: " Phone Number",
+                            labelStyle: TextStyle(color: Colors.black),
+                            prefixIcon: Icon(
+                              Icons.call,
+                              color: Colors.grey,
+                            ),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(28))),
+                      ),
                     ),
+                    SizedBox(height: 20,),
                     Container(
                       width: 300,
                       height: 60,
@@ -73,6 +108,25 @@ class LoginScreen extends StatelessWidget {
                     ),
                     Container(
                       width: 300,
+                      height: 60,
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.orange),
+                                borderRadius: BorderRadius.circular(28)),
+                            labelText: " Vehicle Type",
+                            labelStyle: TextStyle(color: Colors.black),
+                            prefixIcon: Icon(
+                              Icons.directions_car_rounded,
+                              color: Colors.grey,
+                            ),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(28))),
+                      ),
+                    ),
+                    SizedBox(height: 20,),
+                    Container(
+                      width: 300,
                       height: 58,
                       child: TextFormField(
                         decoration: InputDecoration(
@@ -94,12 +148,9 @@ class LoginScreen extends StatelessWidget {
                             )),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 180.0, top: 13),
-                      child: Text("forget password?"),
-                    ),
+
                     SizedBox(
-                      height: 11,
+                      height: 18,
                     ),
                     Container(
                       width: 260,
@@ -108,8 +159,8 @@ class LoginScreen extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18)),
                         color: Colors.orange,
-                        onPressed: () { Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen(),));},
-                        child: Text("LOGIN",
+                        onPressed: () {},
+                        child: Text("Create Account",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
@@ -121,14 +172,12 @@ class LoginScreen extends StatelessWidget {
                       child: Row(
                         children: [
                           Text(
-                            'Don\'t have an account?',
+                            'Already have an account?',
                           ),
                           TextButton(
-                            onPressed: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpChoose(),));
-                            },
+                            onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpChoose(),));},
                             child: Text(
-                              'Sign up',
+                              'Sign in',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.orange,
