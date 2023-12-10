@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:project1/home_screen.dart';
-import 'package:project1/signupcustomer_screen.dart';
-import 'package:project1/signupdilevery.dart';
+import 'package:project1/layout/layout.dart';
 
 class SignUpChoose extends StatelessWidget {
-  const SignUpChoose({super.key});
+ bool? isDriver ;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +15,7 @@ appBar: AppBar(backgroundColor: Colors.white,iconTheme: IconThemeData(color: Col
             children: [
 
               Image.asset(
-                "assets/images/dilevery_logo.png",
+                "assets/images/img.png",
                 width: 300,
                 height: 300,
               ),
@@ -35,12 +33,12 @@ appBar: AppBar(backgroundColor: Colors.white,iconTheme: IconThemeData(color: Col
                       height: 18,
                     ),
                     Text(
-                      "ARE YOU CUSTOMER OR DRIVER?",
+                      "Choose Your Role:",
                       style:
-                      TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
                     ),
                     SizedBox(
-                      height: 50,
+                      height: 40,
                     ),
 
                     Container(
@@ -50,7 +48,11 @@ appBar: AppBar(backgroundColor: Colors.white,iconTheme: IconThemeData(color: Col
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50)),
                         color: Colors.orange,
-                        onPressed: () { Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpCustomer(),));},
+                        onPressed: () {
+                          isDriver = false ;
+                          
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => LayoutScreen(isDriver!)));
+                          },
                         child: Text("Customer",
                             style: TextStyle(
                                 color: Colors.white,
@@ -69,7 +71,9 @@ appBar: AppBar(backgroundColor: Colors.white,iconTheme: IconThemeData(color: Col
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50)),
                         color: Colors.orange,
-                        onPressed: () { Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpDilevery(),));},
+                        onPressed: () {
+                          isDriver = true ;
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => LayoutScreen(isDriver!),),);},
                         child: Text("Driver",
                             style: TextStyle(
                                 color: Colors.white,

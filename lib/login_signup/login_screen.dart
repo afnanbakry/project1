@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project1/home_screen.dart';
-import 'package:project1/signup_choose.dart';
-import 'package:project1/signupcustomer_screen.dart';
+import 'package:project1/login_signup/signup_choose.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -9,18 +7,19 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          iconTheme: IconThemeData(color: Colors.orange, size: 35)),
       backgroundColor: Colors.white,
       body: Center(
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(
-                height: 60,
-              ),
               Image.asset(
-                "assets/images/dilevery_logo.png",
+                "assets/images/img.png",
                 width: 250,
-                height: 250,
+                height: 240,
               ),
               Container(
                 width: 340,
@@ -108,7 +107,9 @@ class LoginScreen extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18)),
                         color: Colors.orange,
-                        onPressed: () { Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen(),));},
+                        onPressed: () {
+
+                        },
                         child: Text("LOGIN",
                             style: TextStyle(
                                 color: Colors.white,
@@ -125,7 +126,11 @@ class LoginScreen extends StatelessWidget {
                           ),
                           TextButton(
                             onPressed: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpChoose(),));
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => SignUpChoose(),
+                                  ));
                             },
                             child: Text(
                               'Sign up',
