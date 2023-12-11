@@ -9,20 +9,22 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedSplashScreen(
-      splash: Container(
-        height: 600,
-        width: 400,
-        child: Center(
-          child: Image.asset(
-            "assets/images/img.png",
-            fit: BoxFit.cover,
+    return Container(
+      child: AnimatedSplashScreen(
+        splash: Container(
+          height: 600,
+          width: 400,
+          child: Center(
+            child: Image.asset(
+              "assets/images/img.png",
+              fit: BoxFit.fill,
+            ),
           ),
         ),
+        backgroundColor: Colors.white,
+        splashTransition: SplashTransition.rotationTransition,
+        nextScreen: const AfterSplash(),
       ),
-      backgroundColor: Colors.white,
-      splashTransition: SplashTransition.rotationTransition,
-      nextScreen: const AfterSplash(),
     );
   }
 }

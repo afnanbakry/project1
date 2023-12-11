@@ -67,7 +67,7 @@ class AfterSplash extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => LoginScreen(),
+                              builder: (context) => LoginScreen(true),
                             ));
                       },
                       child: Text("Login",

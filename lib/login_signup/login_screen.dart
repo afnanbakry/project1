@@ -1,9 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:project1/layout/layout.dart';
 import 'package:project1/login_signup/signup_choose.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class LoginScreen extends StatefulWidget {
+  final bool isDriver;
 
+  LoginScreen(this.isDriver);
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+    bool? isDriverr;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    isDriverr=widget.isDriver;
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -108,8 +123,9 @@ class LoginScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(18)),
                         color: Colors.orange,
                         onPressed: () {
-
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => LayoutScreen(isDriverr!),));
                         },
+
                         child: Text("LOGIN",
                             style: TextStyle(
                                 color: Colors.white,

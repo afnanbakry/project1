@@ -5,7 +5,7 @@ import 'package:project1/screens/setting.dart';
 import '../screens/new_order.dart';
 
 class LayoutScreen extends StatefulWidget {
-  static const String routeName = 'layout';
+
   final bool isDriver;
 
   LayoutScreen(this.isDriver);

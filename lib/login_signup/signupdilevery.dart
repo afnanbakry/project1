@@ -1,11 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:project1/screens/delivery_home.dart';
+import 'package:project1/layout/layout.dart';
 import 'package:project1/login_signup/login_screen.dart';
+import 'package:project1/screens/delivery_home.dart';
 import 'package:project1/login_signup/signup_choose.dart';
 
-class SignUpDilevery extends StatelessWidget {
-  const SignUpDilevery({super.key});
+class SignUpDilevery extends StatefulWidget {
+  final bool isDriver;
 
+
+  SignUpDilevery(this.isDriver);
+
+  @override
+  State<SignUpDilevery> createState() => _SignUpDileveryState();
+}
+
+class _SignUpDileveryState extends State<SignUpDilevery> {
+  bool? isDriver;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    isDriver=widget.isDriver;
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -160,7 +176,7 @@ class SignUpDilevery extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18)),
                         color: Colors.orange,
-                        onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => DeliveryHome(),));},
+                        onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => LayoutScreen(isDriver!),));},
                         child: Text("Create Account",
                             style: TextStyle(
                                 color: Colors.white,
@@ -176,7 +192,9 @@ class SignUpDilevery extends StatelessWidget {
                             'Already have an account?',
                           ),
                           TextButton(
-                            onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpChoose(),));},
+                            onPressed: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpChoose(),),
+                              );},
                             child: Text(
                               'Sign in',
                               style: TextStyle(

@@ -1,5 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:project1/layout/layout.dart';
+import 'package:project1/login_signup/signupcustomer_screen.dart';
+import 'package:project1/login_signup/signupdilevery.dart';
 
 class SignUpChoose extends StatelessWidget {
  bool? isDriver ;
@@ -51,7 +55,7 @@ appBar: AppBar(backgroundColor: Colors.white,iconTheme: IconThemeData(color: Col
                         onPressed: () {
                           isDriver = false ;
                           
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => LayoutScreen(isDriver!)));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpCustomer(isDriver!),));
                           },
                         child: Text("Customer",
                             style: TextStyle(
@@ -73,7 +77,7 @@ appBar: AppBar(backgroundColor: Colors.white,iconTheme: IconThemeData(color: Col
                         color: Colors.orange,
                         onPressed: () {
                           isDriver = true ;
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => LayoutScreen(isDriver!),),);},
+                          Navigator.push(context, MaterialPageRoute(builder: (context) =>SignUpDilevery(isDriver!),),);},
                         child: Text("Driver",
                             style: TextStyle(
                                 color: Colors.white,

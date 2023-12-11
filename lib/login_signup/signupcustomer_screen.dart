@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:project1/login_signup/login_screen.dart';
 import 'package:project1/login_signup/signup_choose.dart';
 
 class SignUpCustomer extends StatefulWidget {
+ final bool isDriver;
+
+ SignUpCustomer(this.isDriver);
+
   @override
   State<SignUpCustomer> createState() => _SignUpCustomerState();
 }
@@ -10,7 +15,13 @@ class _SignUpCustomerState extends State<SignUpCustomer> {
    var formKey = GlobalKey<FormState>();
 
    bool isVisible = true ;
-
+   bool? isDriver;
+   @override
+   void initState() {
+     // TODO: implement initState
+     super.initState();
+     isDriver=widget.isDriver;
+   }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -197,7 +208,7 @@ backgroundColor: Colors.white,
                           color: Colors.orange,
                           onPressed: () {
                             if(formKey.currentState!.validate()){
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpChoose(),));
+                              Navigator.push(context, MaterialPageRoute(builder: (context) =>LoginScreen(isDriver!),));
                             }
                           },
                           child: Text("Create Account",
