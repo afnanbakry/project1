@@ -14,6 +14,7 @@ class SignUpDilevery extends StatefulWidget {
 }
 
 class _SignUpDileveryState extends State<SignUpDilevery> {
+  bool isVisible = true ;
   bool? isDriver;
   var formKey = GlobalKey<FormState>();
 
@@ -190,6 +191,8 @@ class _SignUpDileveryState extends State<SignUpDilevery> {
                               return null;
                             }
                           },
+                          obscureText: isVisible,
+                          keyboardType: TextInputType.visiblePassword,
                           decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                   borderSide: BorderSide(color: Colors.orange),
@@ -200,9 +203,19 @@ class _SignUpDileveryState extends State<SignUpDilevery> {
                                 Icons.lock,
                                 color: Colors.grey,
                               ),
-                              suffixIcon: Icon(
-                                Icons.remove_red_eye_sharp,
-                                color: Colors.grey,
+                              suffixIcon: InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    isVisible = !isVisible;
+                                  });
+                                },
+                                child:isVisible?Icon(
+                                  Icons.remove_red_eye_sharp,
+                                  color: Colors.grey,
+                                ): Icon(
+                                  Icons.visibility_off,
+                                  color: Colors.grey,
+                                ),
                               ),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(28),
