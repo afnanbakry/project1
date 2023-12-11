@@ -237,7 +237,7 @@ class _SignUpDileveryState extends State<SignUpDilevery> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => LayoutScreen(isDriver!),
+                                    builder: (context) => LoginScreen(isDriver!),
                                   ));
                             }
                           },

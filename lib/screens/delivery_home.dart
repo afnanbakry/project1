@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project1/screens/tracking_screen.dart';
 
 class DeliveryHome extends StatelessWidget {
   const DeliveryHome({super.key});
@@ -6,33 +7,7 @@ class DeliveryHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //     title: Padding(
-      //       padding: const EdgeInsets.all(5.0),
-      //     ),
-      //     leading: Padding(
-      //       padding: const EdgeInsets.all(6.0),
-      //       child: Container(
-      //         decoration: BoxDecoration(
-      //           shape: BoxShape.circle,
-      //           image: DecorationImage(
-      //             image: AssetImage("assets/images/img.png"),
-      //           ),
-      //         ),
-      //       ),
-      //     ),
-      //     backgroundColor: Colors.orange,
-      //     elevation: 0,
-      //     iconTheme: IconThemeData(color: Colors.white, size: 35),
-      //     actions: [
-      //       Icon(
-      //         Icons.menu,
-      //       ),
-      //       SizedBox(
-      //         width: 8,
-      //       ),
-      //       //onPressed: () {},
-      //     ]),
+
       body: Center(
           child: Padding(
         padding: const EdgeInsets.all(21.0),
@@ -79,7 +54,7 @@ class DeliveryHome extends StatelessWidget {
                             ),
                             Container(
                               width: 300,
-                              height: 185,
+                              height: 200,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -141,11 +116,25 @@ class DeliveryHome extends StatelessWidget {
                                     Text('20\$',
                                         style: TextStyle(fontSize: 25)),
                                     Spacer(),
-                                    Text("Accept",
-                                        style: TextStyle(
-                                            color: Colors.orange,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 25)),
+                                    Container(
+                                      width: 110,
+                                      height: 40,
+                                      child: MaterialButton(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(18)),
+                                        color: Colors.orange,
+                                        onPressed: () {
+                                         {
+                                            Navigator.push(context, MaterialPageRoute(builder: (context) =>TrackingScreen(),));
+                                          }
+                                        },
+                                        child: Text("Accept",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 22)),
+                                      ),
+                                    ),
                                   ])
                                 ],
                               ),
