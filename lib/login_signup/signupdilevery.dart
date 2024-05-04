@@ -42,11 +42,11 @@ class _SignUpDileveryState extends State<SignUpDilevery> {
                 Image.asset(
                   "assets/images/img.png",
                   width: 150,
-                  height: 100,
+                  height: 80,
                 ),
                 Container(
                   width: 340,
-                  height: 570,
+                  height: 585,
                   decoration: BoxDecoration(
                     color: Colors.grey[200],
                     borderRadius: BorderRadius.circular(25),

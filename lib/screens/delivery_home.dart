@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project1/screens/track_location.dart';
 import 'package:project1/screens/tracking_screen.dart';
 
 class DeliveryHome extends StatelessWidget {
@@ -7,7 +8,10 @@ class DeliveryHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+appBar: AppBar(        centerTitle: true,
 
+  title: Text("My Requests"),
+),
       body: Center(
           child: Padding(
         padding: const EdgeInsets.all(21.0),
@@ -17,7 +21,7 @@ class DeliveryHome extends StatelessWidget {
                 physics: BouncingScrollPhysics(),
                 itemBuilder: (context, index) => Container(
                       width: 340,
-                      height: 230,
+                      height: 255,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(40),
@@ -29,23 +33,22 @@ class DeliveryHome extends StatelessWidget {
                           children: [
                             Column(
                               children: [
-                                SizedBox(
-                                  height:55,
+
+                                const SizedBox(
+                                  height:22,
                                 ),
-                                CircleAvatar(
+                                const CircleAvatar(
                                   radius: 7,
                                   backgroundColor: Colors.orange,
                                 ),
                                 Container(
-                                  height: 20,
+                                  height: 30,
                                   color: Colors.orange,
                                   width: 4,
                                 ),
-                                CircleAvatar(
-                                  radius: 7,
-                                  backgroundColor: Colors.orange,
-                                ),
-                                SizedBox(height: 10,),
+
+                                Icon(Icons.location_on,color: Colors.orange,),
+                                SizedBox(height: 12,),
                                 Icon(Icons.phone,color: Colors.orange),
                               ],
                             ),
@@ -54,66 +57,31 @@ class DeliveryHome extends StatelessWidget {
                             ),
                             Container(
                               width: 300,
-                              height: 200,
+                              height: 221,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Icon(Icons.directions_car_rounded,color: Colors.grey),
-                                          Text('car',
-                                              style: TextStyle(
-                                                fontSize: 25,
-                                                color: Colors.grey,
-                                              )),
-                                        ],
-                                      ),
-                                      Row(
-                                        children: [
-                                          Icon(Icons.directions_run,color: Colors.orange),
-                                          Text('courier',
-                                              style: TextStyle(
-                                                fontSize: 25,
-                                                color: Colors.orange,
-                                              )),
-                                        ],
-                                      ),
-                                      Row(
-                                        children: [
-                                          Icon(Icons.local_shipping,color: Colors.grey),
-                                          Text('truck',
-                                              style: TextStyle(
-                                                fontSize: 25,
-                                                color: Colors.grey,
-                                              )),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
+
+                                  const SizedBox(
                                     height: 3,
                                   ),
-                                  Text('Benziena Mobile ',
+                                  const Text('Benziena Mobile ',
                                       style: TextStyle(fontSize: 25)),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 3,
                                   ),
-                                  Text('Bus Station ',
+                                  const Text('Bus Station ',
                                       style: TextStyle(fontSize: 25)),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 3,
                                   ),
-                                  Text('0123456789',
+                                  const Text('0123456789',
                                       style: TextStyle(
                                         fontSize: 25,
                                       )),
-                                  Divider(color: Colors.orangeAccent,thickness: 3,endIndent: 25),
+                                  const Divider(color: Colors.orangeAccent,thickness: 3,endIndent: 25),
                                   Row(children: [
-                                    Text('20\$',
+                                    const Text('20\$',
                                         style: TextStyle(fontSize: 25)),
                                     Spacer(),
                                     Container(
@@ -125,7 +93,7 @@ class DeliveryHome extends StatelessWidget {
                                         color: Colors.orange,
                                         onPressed: () {
                                          {
-                                            Navigator.push(context, MaterialPageRoute(builder: (context) =>TrackingScreen(),));
+                                            Navigator.push(context, MaterialPageRoute(builder: (context) =>HomeScreen(),));
                                           }
                                         },
                                         child: Text("Accept",
