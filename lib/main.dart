@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:project1/login_screen.dart';
+import 'package:project1/login_signup/signup_choose.dart';
+import 'package:project1/components/theme.dart';
+import 'package:project1/splash/splash_screen.dart';
+
+
+import 'screens/after_splash.dart';
+import 'layout/layout.dart';
 
 void main(){
   runApp(MyApp());
@@ -12,7 +18,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginScreen()
+        theme: lightMode,
+        darkTheme: darkMode,
+        themeMode: ThemeMode.light,
+      home: LayoutScreen(true)
     );
   }
 }
