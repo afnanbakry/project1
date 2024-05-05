@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project1/login_signup/login_screen.dart';
 import 'package:project1/login_signup/signup_choose.dart';
+import 'package:project1/login_signup/signupdilevery.dart';
 
 class AfterSplash extends StatelessWidget {
   const AfterSplash({super.key});
@@ -45,7 +46,7 @@ class AfterSplash extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => SignUpChoose(),
+                              builder: (context) => SignUpDilevery(true),
                             ));
                       },
                       child: Text("Sign Up",

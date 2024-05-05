@@ -70,7 +70,7 @@ class _TrackingLocationScreenState extends State<TrackingLocationScreen> {
             child: Container(
               child: Container(
                 width: double.infinity,
-                height: 232,
+                height: 250,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
@@ -92,14 +92,14 @@ class _TrackingLocationScreenState extends State<TrackingLocationScreen> {
                             color: Colors.orange,
                           ),
                           SizedBox(
-                            height: 17,
+                            height: 25,
                           ),
                           CircleAvatar(
                             radius: 7,
                             backgroundColor: Colors.orange,
                           ),
                           Container(
-                            height: 14,
+                            height: 20,
                             color: Colors.orange,
                             width: 4,
                           ),
@@ -150,12 +150,7 @@ class _TrackingLocationScreenState extends State<TrackingLocationScreen> {
                             Row(
                               children: [
                                 Text('20\$', style: TextStyle(fontSize: 18)),
-                                Spacer(),
-                                Text('Waiting...',
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      color: Colors.orange,
-                                    )),
+
                               ],
                             ),
                             Center(

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:project1/layout/layout.dart';
 import 'package:project1/login_signup/signup_choose.dart';
+import 'package:project1/login_signup/signupdilevery.dart';
+import 'package:project1/screens/forget_Password.dart';
 
 class LoginScreen extends StatefulWidget {
   final bool isDriver;
@@ -38,11 +40,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 Image.asset(
                   "assets/images/img.png",
                   width: 250,
-                  height: 240,
+                  height: 200,
                 ),
                 Container(
                   width: 340,
-                  height: 400,
+                  height: 450,
                   decoration: BoxDecoration(
                     color: Colors.grey[200],
                     borderRadius: BorderRadius.circular(25),
@@ -70,7 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       Container(
                         width: 300,
-                        height: 60,
+                        height: 58,
                         child: TextFormField(
                           validator: (value) {
                             if (value!.isEmpty) {
@@ -127,8 +129,27 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 180.0, top: 13),
-                        child: Text("forget password?"),
+                        padding: const EdgeInsets.only(left: 180.0),
+                        child: Row(
+                          children: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>ForgetPasswordScreen (),
+                                    ));
+                              },
+                              child: Text(
+                                'Forget Password?',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.orange,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                       SizedBox(
                         height: 11,
@@ -169,7 +190,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => SignUpChoose(),
+                                      builder: (context) => SignUpDilevery(true),
                                     ));
                               },
                               child: Text(

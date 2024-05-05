@@ -58,7 +58,7 @@ class _SignUpDileveryState extends State<SignUpDilevery> {
                         height: 18,
                       ),
                       Text(
-                        " Dilevery Create Account",
+                        "  Create Account",
                         style:
                             TextStyle(fontWeight: FontWeight.bold, fontSize: 26),
                       ),
@@ -260,7 +260,7 @@ class _SignUpDileveryState extends State<SignUpDilevery> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => SignUpChoose(),
+                                    builder: (context) => LoginScreen(true),
                                   ),
                                 );
                               },
