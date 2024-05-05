@@ -5,7 +5,6 @@ import 'package:project1/screens/setting.dart';
 import '../screens/new_order.dart';
 
 class LayoutScreen extends StatefulWidget {
-
   final bool isDriver;
 
   LayoutScreen(this.isDriver);
@@ -17,7 +16,7 @@ class LayoutScreen extends StatefulWidget {
 class _LayoutScreenState extends State<LayoutScreen> {
   int currentIndex = 0;
 
-    List<BottomNavigationBarItem>? bottomsNavBar;
+  List<BottomNavigationBarItem>? bottomsNavBar;
 
   List<Widget>? screens;
 
@@ -28,13 +27,13 @@ class _LayoutScreenState extends State<LayoutScreen> {
     bottomsNavBar = [
       widget.isDriver
           ? const BottomNavigationBarItem(
-        icon: Icon(Icons.square_outlined),
-        label: "Orders",
-      )
+              icon: Icon(Icons.square_outlined),
+              label: "Orders",
+            )
           : const BottomNavigationBarItem(
-        icon: Icon(Icons.add),
-        label: "New_Order",
-      ),
+              icon: Icon(Icons.add),
+              label: "New_Order",
+            ),
       const BottomNavigationBarItem(
         icon: Icon(Icons.chat),
         label: "Chat",

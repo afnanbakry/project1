@@ -12,14 +12,15 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-    bool? isDriverr;
-    var formKey = GlobalKey<FormState>();
+  bool? isDriverr;
+  var formKey = GlobalKey<FormState>();
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    isDriverr=widget.isDriver;
+    isDriverr = widget.isDriver;
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
           iconTheme: IconThemeData(color: Colors.orange, size: 35)),
       backgroundColor: Colors.white,
       body: Form(
-    key: formKey,
+        key: formKey,
         child: Center(
           child: SingleChildScrollView(
             child: Column(
@@ -54,8 +55,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       Text(
                         "Welcome Back!",
-                        style:
-                            TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 28),
                       ),
                       SizedBox(
                         height: 18,
@@ -140,13 +141,15 @@ class _LoginScreenState extends State<LoginScreen> {
                               borderRadius: BorderRadius.circular(18)),
                           color: Colors.orange,
                           onPressed: () {
-                            if(formKey.currentState!.validate()) {
-                              Navigator.push(context, MaterialPageRoute(
-                                builder: (context) =>
-                                    LayoutScreen(isDriverr!),));
+                            if (formKey.currentState!.validate()) {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        LayoutScreen(isDriverr!),
+                                  ));
                             }
                           },
-
                           child: Text("LOGIN",
                               style: TextStyle(
                                   color: Colors.white,

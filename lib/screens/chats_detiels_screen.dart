@@ -1,4 +1,3 @@
-import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 
 class ChatsDetailsScreen extends StatelessWidget {
@@ -14,143 +13,102 @@ class ChatsDetailsScreen extends StatelessWidget {
         title: Row(
           children: [
             CircleAvatar(
-              radius: 22.0,
-              backgroundImage: AssetImage(
-                'assets/images/dilevery_logo.png', // Replace with the actual URL
-              ),
-            ),
+                radius: 22.0,
+                backgroundImage: NetworkImage(
+                    'https://buffer.com/cdn-cgi/image/w=1000,fit=contain,q=90,f=auto/library/content/images/size/w1200/2023/10/free-images.jpg')),
             const SizedBox(
               width: 5.0,
             ),
             Text(
-              'Mohammed',
+              'Afnan',
               style: const TextStyle(fontSize: 15),
             ),
           ],
         ),
       ),
-      body: ConditionalBuilder(
-        condition: true,
-        builder: (context) => Padding(
-          padding: EdgeInsets.all(17.0),
-          child: Column(
-            children: [
-              Expanded(
-                child: ListView.separated(
-                  itemBuilder: (context, index) {
-                    return buildMyMessage(); // Change to buildMessage() if needed
-                  },
-                  separatorBuilder: (context, index) => const SizedBox(
-                    height: 10,
-                  ),
-                  itemCount: 5,
-                ),
+      body: Padding(
+        padding: const EdgeInsets.all(17.0),
+        child: Column(
+          children: [
+            Expanded(
+              child: ListView.builder(
+                itemCount: 5, // Replace with actual message count
+                itemBuilder: (context, index) {
+                  // Replace with logic to display actual messages
+                  return buildMessage(
+                    index,
+                    index % 2 == 0
+                        ? true
+                        : false, // Example: Alternate between sender and receiver
+                  );
+                },
               ),
-              Container(
-                height: 50,
-                clipBehavior: Clip.antiAliasWithSaveLayer,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Colors.grey,
-                    width: 1.0,
-                  ),
-                  borderRadius: BorderRadius.circular(
-                    15.0,
-                  ),
-                ),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                        child: TextFormField(
-                          controller: messageController,
-                          decoration: const InputDecoration(
-                            hintText: 'write your message',
-                            border: InputBorder.none,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      height: 50,
-                      child: MaterialButton(
-                        color: Colors.blue,
-                        onPressed: () {
-                          // Handle send button click
-                        },
-                        minWidth: 1,
-                        child: const Icon(
-                          Icons.send,
-                          size: 18,
-                          color: Colors.white,
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              )
-            ],
-          ),
+            ),
+            const SizedBox(height: 10),
+            buildMessageInputField(),
+          ],
         ),
-        fallback: (context) => const Center(child: CircularProgressIndicator()),
       ),
     );
   }
 
-  Widget buildMessage() => Align(
-    alignment: AlignmentDirectional.centerStart,
-    child: Container(
-      decoration: BoxDecoration(
-        color: Colors.grey[300],
-        borderRadius: BorderRadiusDirectional.only(
-          bottomEnd: Radius.circular(
-            10.0,
-          ),
-          topStart: Radius.circular(
-            10.0,
-          ),
-          topEnd: Radius.circular(
-            10.0,
+  Widget buildMessage(int index, bool isSender) {
+    return Align(
+      alignment: isSender ? Alignment.centerRight : Alignment.centerLeft,
+      child: Container(
+        decoration: BoxDecoration(
+          color: isSender ? Colors.blue.withOpacity(0.2) : Colors.grey[300],
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(isSender ? 10.0 : 0),
+            topRight: Radius.circular(isSender ? 0 : 10.0),
+            bottomLeft: Radius.circular(10.0),
+            bottomRight: Radius.circular(10.0),
           ),
         ),
+        padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
+        margin: const EdgeInsets.symmetric(vertical: 5.0),
+        child: Text(
+          'Message $index', // Replace with actual message content
+          style: TextStyle(color: isSender ? Colors.white : Colors.black),
+        ),
       ),
-      padding: EdgeInsets.symmetric(
-        vertical: 5.0,
-        horizontal: 10.0,
-      ),
-      child: Text(
-        'model',
-      ),
-    ),
-  );
+    );
+  }
 
-  Widget buildMyMessage() => Align(
-    alignment: AlignmentDirectional.centerEnd,
-    child: Container(
-      decoration: BoxDecoration(
-        color: Colors.blue.withOpacity(
-          .2,
+  Widget buildMessageInputField() {
+    return Row(
+      children: [
+        Expanded(
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.grey[200],
+              borderRadius: BorderRadius.circular(30.0),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: TextFormField(
+                controller: messageController,
+                decoration: InputDecoration(
+                  hintText: 'Write your message...',
+                  border: InputBorder.none,
+                ),
+              ),
+            ),
+          ),
         ),
-        borderRadius: BorderRadiusDirectional.only(
-          bottomStart: Radius.circular(
-            10.0,
-          ),
-          topStart: Radius.circular(
-            10.0,
-          ),
-          topEnd: Radius.circular(
-            10.0,
-          ),
+        const SizedBox(width: 10),
+        FloatingActionButton(
+          onPressed: () {
+            // Handle send button click
+            // Example: Send message from input field
+            print('Message sent: ${messageController.text}');
+            messageController.clear();
+          },
+          child: Icon(Icons.send),
+          backgroundColor: Colors.blue,
+          elevation: 0,
         ),
-      ),
-      padding: EdgeInsets.symmetric(
-        vertical: 5.0,
-        horizontal: 10.0,
-      ),
-      child: Text(
-        'model', // Fixed typo: 'model}' to 'model'
-      ),
-    ),
-  );
+      ],
+    );
+  }
 }

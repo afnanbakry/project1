@@ -1,19 +1,24 @@
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+import 'orderreceivedscreen.dart';
+
+class TrackingLocationScreen extends StatefulWidget {
+  const TrackingLocationScreen({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<TrackingLocationScreen> createState() => _TrackingLocationScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _TrackingLocationScreenState extends State<TrackingLocationScreen> {
   final Completer<GoogleMapController> _controller =
       Completer<GoogleMapController>();
+
   @override
   void initState() {
     super.initState();
@@ -24,37 +29,176 @@ class _HomeScreenState extends State<HomeScreen> {
   int index = 0;
   Set<Marker> markers = {};
   static const CameraPosition _kLake = CameraPosition(
-      bearing: 192.8334901395799,
-      target: LatLng(37.43296265331129, -122.08832357078792),
-      tilt: 59.440717697143555,
-      zoom: 19.151926040649414);
+    bearing: 192.8334901395799,
+    target: LatLng(37.43296265331129, -122.08832357078792),
+    tilt: 59.440717697143555,
+    zoom: 19.151926040649414,
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: myLocation == null
-          ? const Center(child: CircularProgressIndicator())
-          : GoogleMap(
-              mapType: MapType.hybrid,
-              onTap: (argument) {
-                setState(() {});
-                index++;
+      body: Stack(
+        alignment: Alignment.topCenter,
+        children: [
+          Container(
+            height: 493,
+            child: myLocation == null
+                ? const Center(child: CircularProgressIndicator())
+                : GoogleMap(
+                    mapType: MapType.hybrid,
+                    onTap: (argument) {
+                      setState(() {});
+                      index++;
 
-                markers.add(
-                  Marker(
-                      markerId: MarkerId("myLocation$index"),
-                      position: argument),
-                );
-              },
-              markers: markers,
-              initialCameraPosition: myLocation!,
-              onMapCreated: (GoogleMapController controller) {
-                _controller.complete(controller);
-              },
+                      markers.add(
+                        Marker(
+                          markerId: MarkerId("myLocation$index"),
+                          position: argument,
+                        ),
+                      );
+                    },
+                    markers: markers,
+                    initialCameraPosition: myLocation!,
+                    onMapCreated: (GoogleMapController controller) {
+                      _controller.complete(controller);
+                    },
+                  ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              child: Container(
+                width: double.infinity,
+                height: 232,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(20),
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: Row(
+                    children: [
+                      Column(
+                        children: [
+                          const SizedBox(
+                            height: 11,
+                          ),
+                          const Icon(
+                            Icons.person,
+                            color: Colors.orange,
+                          ),
+                          SizedBox(
+                            height: 17,
+                          ),
+                          CircleAvatar(
+                            radius: 7,
+                            backgroundColor: Colors.orange,
+                          ),
+                          Container(
+                            height: 14,
+                            color: Colors.orange,
+                            width: 4,
+                          ),
+                          Icon(
+                            Icons.location_on,
+                            color: Colors.orange,
+                          ),
+                          Icon(Icons.phone, color: Colors.orange),
+                        ],
+                      ),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Container(
+                        width: 300,
+                        height: 600,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Row(children: [
+                              Text('Mohammed saleh',
+                                  style: TextStyle(fontSize: 17)),
+                            ]),
+                            Divider(
+                              color: Colors.orangeAccent,
+                              thickness: 1.5,
+                              endIndent: 25,
+                            ),
+                            Text('Benziena Mobile ',
+                                style: TextStyle(fontSize: 18)),
+                            SizedBox(
+                              height: 3,
+                            ),
+                            Text('Bus Station ',
+                                style: TextStyle(fontSize: 18)),
+                            const Text('0123456789',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                )),
+                            Divider(
+                              color: Colors.orangeAccent,
+                              thickness: 1.5,
+                              endIndent: 25,
+                            ),
+                            Row(
+                              children: [
+                                Text('20\$', style: TextStyle(fontSize: 18)),
+                                Spacer(),
+                                Text('Waiting...',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      color: Colors.orange,
+                                    )),
+                              ],
+                            ),
+                            Center(
+                              child: ElevatedButton(
+                                style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all(Colors.orange),
+                                ),
+                                onPressed: () {
+                                  // Navigate to the OrderReceivedScreen with a simple animation
+                                  Navigator.push(
+                                    context,
+                                    PageRouteBuilder(
+                                      transitionDuration:
+                                          Duration(milliseconds: 500),
+                                      pageBuilder: (_, __, ___) =>
+                                          OrderReceivedScreen(),
+                                      transitionsBuilder:
+                                          (_, animation, __, child) {
+                                        return FadeTransition(
+                                          opacity: animation,
+                                          child: child,
+                                        );
+                                      },
+                                    ),
+                                  );
+                                },
+                                child: const Text(
+                                  "Order Received",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: _goToTheLake,
-        label: const Text('To the lake!'),
-        icon: const Icon(Icons.directions_boat),
+          ),
+        ],
       ),
     );
   }
@@ -124,4 +268,3 @@ class _HomeScreenState extends State<HomeScreen> {
     await controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
   }
 }
-//AIzaSyBioWgovcL1z23wwzZbidIx53mhIg_Kx60
